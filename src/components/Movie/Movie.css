@@ -9,3 +9,8 @@
   right: 10px;
   color: white;
 }
+
+.movie--large img {
+  width: 400px;
+  height: 250px;
+}

@@ -1,7 +1,7 @@
 import { v4 as randomId } from "uuid";
 
 class Movie {
-  constructor(imageUrl, year, title, category, pg, bookmarked) {
+  constructor(imageUrl, year, title, category, pg, bookmarked, trending = false) {
     this.id = randomId();
     this.imageUrl = imageUrl;
     this.year = year;
@@ -9,6 +9,7 @@ class Movie {
     this.category = category;
     this.pg = pg;
     this.bookmarked = bookmarked;
+    this.trending = trending;
   }
 }
 
@@ -19,7 +20,8 @@ export const movieList = [
     "The great lands",
     "Movie",
     "PG",
-    true
+    true,
+    true,
   ),
   new Movie(
     "https://picsum.photos/id/100/300/200",
@@ -43,7 +45,8 @@ export const movieList = [
     "lands",
     "Series",
     "18+",
-    false
+    false,
+    true
   ),
   new Movie(
     "https://picsum.photos/id/33/300/200",
@@ -59,7 +62,8 @@ export const movieList = [
     "great",
     "Series",
     "PG",
-    false
+    false,
+    true,
   ),
   new Movie(
     "https://picsum.photos/id/88/300/200",
@@ -67,7 +71,8 @@ export const movieList = [
     "The great lands",
     "Movie",
     "PG",
-    false
+    false,
+    true
   ),
   new Movie(
     "https://picsum.photos/id/250/300/200",

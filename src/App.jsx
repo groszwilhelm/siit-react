@@ -1,16 +1,23 @@
 import "./App.css";
 import Navigation from "./components/Navigation";
-import Search from "./components/Search";
-import Trending from "./components/Trending";
-import Recommended from "./components/Recommended";
+import Search from "./components/Search/Search";
+import Trending from "./components/Trending/Trending";
+import Recommended from "./components/Recommended/Recommended";
+import { useState } from 'react';
 
 function App() {
+  let [searchTerm, setSearchTerm] = useState('');
+
+  function onSearchTermChange(term) {    
+    setSearchTerm(term);
+  }
+
   return (
     <main>
       <Navigation />
-      <Search />
+      <Search setSearchTerm={onSearchTermChange} />
       <Trending />
-      <Recommended />
+      <Recommended searchTerm={searchTerm} />
     </main>
   );
 }

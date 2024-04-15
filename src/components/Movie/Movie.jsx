@@ -1,6 +1,8 @@
 import { HiOutlineBookmark } from "react-icons/hi";
 import { HiBookmark } from "react-icons/hi";
 
+import PropTypes from 'prop-types';
+
 import "./Movie.css";
 import { useState } from 'react';
 
@@ -14,8 +16,8 @@ export function Movie(props) {
   }
 
   return (
-    <article className="movie">
-      <img height="200" width="300" src={imageUrl} />
+    <article className={`movie ${props.large ? 'movie--large' : ''}`}>
+      <img height={props.large ? "250" : "200"} width={props.large ? "400" : "300"} src={imageUrl} />
 
       <span className="movie__bookmark" onClick={setBookmark}>
         {checked ? <HiBookmark /> : <HiOutlineBookmark />}
@@ -29,4 +31,16 @@ export function Movie(props) {
       <h3 className="movie__title">{title}</h3>
     </article>
   );
+}
+
+Movie.propTypes = {
+  large: PropTypes.bool,
+  movie: PropTypes.shape({
+    title: PropTypes.string,
+    year: PropTypes.number,
+    bookmarked: PropTypes.bool,
+    pg: PropTypes.string,
+    category: PropTypes.string,
+    imageUrl: PropTypes.string,
+  })
 }
