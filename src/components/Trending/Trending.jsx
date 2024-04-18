@@ -1,5 +1,5 @@
 import { movieList } from "../../data";
-import { Movie } from "../Movie/Movie";
+import Movie from "../Movie/Movie";
 
 import './Trending.css';
 

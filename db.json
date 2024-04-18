@@ -1,0 +1,84 @@
+{
+  "movies": [
+    {
+      "id": "e1fccd6b-28d4-4f01-892b-b72c672821d9",
+      "imageUrl": "https://picsum.photos/id/237/300/200",
+      "year": 2019,
+      "title": "The great lands",
+      "category": "Movie",
+      "pg": "PG",
+      "bookmarked": true,
+      "trending": true
+    },
+    {
+      "id": "56f9b76a-8ec7-44ad-bd44-0eff0496b8e3",
+      "imageUrl": "https://picsum.photos/id/100/300/200",
+      "year": 2019,
+      "title": "The diary",
+      "category": "Movie",
+      "pg": "PG",
+      "bookmarked": false,
+      "trending": false
+    },
+    {
+      "id": "7f51dde4-0fca-4208-87ea-d6d2175757bc",
+      "imageUrl": "https://picsum.photos/id/1/300/200",
+      "year": 2019,
+      "title": "No lands beyond",
+      "category": "Movie",
+      "pg": "PG",
+      "bookmarked": false,
+      "trending": false
+    },
+    {
+      "id": "75ad4bf5-e876-46a5-9e96-91c9b5fc9c5b",
+      "imageUrl": "https://picsum.photos/id/20/300/200",
+      "year": 2019,
+      "title": "lands",
+      "category": "Series",
+      "pg": "18+",
+      "bookmarked": false,
+      "trending": true
+    },
+    {
+      "id": "284e0249-07f6-4007-8c6d-6fe32f5197c6",
+      "imageUrl": "https://picsum.photos/id/33/300/200",
+      "year": 2019,
+      "title": "The",
+      "category": "Movie",
+      "pg": "PG",
+      "bookmarked": false,
+      "trending": false
+    },
+    {
+      "id": "13e60358-2ab3-4daa-b0e1-510f6ef8c5a1",
+      "imageUrl": "https://picsum.photos/id/66/300/200",
+      "year": 2019,
+      "title": "great",
+      "category": "Series",
+      "pg": "PG",
+      "bookmarked": false,
+      "trending": true
+    },
+    {
+      "id": "8ba34dfd-02e7-4177-b147-c3d92ecb494b",
+      "imageUrl": "https://picsum.photos/id/88/300/200",
+      "year": 2019,
+      "title": "The great lands",
+      "category": "Movie",
+      "pg": "PG",
+      "bookmarked": false,
+      "trending": true
+    },
+    {
+      "id": "7eb14fef-0a3e-4f77-a188-f2b901ce00a9",
+      "imageUrl": "https://picsum.photos/id/250/300/200",
+      "year": 2019,
+      "title": "The great lands",
+      "category": "Movie",
+      "pg": "PG",
+      "bookmarked": false,
+      "trending": false
+    }
+  ]
+}

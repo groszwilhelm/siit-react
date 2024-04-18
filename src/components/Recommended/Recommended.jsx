@@ -1,11 +1,30 @@
-import { movieList } from "../../data.js";
-import { Movie } from "../Movie/Movie";
+import Movie from "../Movie/Movie";
 
 import PropTypes from "prop-types";
 
 import "./Recommended.css";
+import { getMovies } from '../../libs/movie';
+import { useEffect, useState } from 'react';
 
 export default function Recommended({ searchTerm }) {
+  // Alternative to JSX syntax below for filtering and mapping
+  // const movieListElement = [];
+
+  // for (const movie of movieList) {
+  //   if (movie.title.toLowerCase().includes(searchTerm.toLowerCase().trim())) {
+  //     movieListElement.push(
+  //       <li className="movie-container" key={movie.id}>
+  //         <Movie movie={movie} />
+  //       </li>
+  //     );
+  //   }
+  // }
+  let [movieList, setMovieList] = useState([]);
+
+  useEffect(() => {
+    getMovies().then((body) => setMovieList(body));
+  }, []);
+
   return (
     <section>
       <header>
@@ -13,6 +32,7 @@ export default function Recommended({ searchTerm }) {
       </header>
 
       <ul className="movie-list">
+        {/* {movieListElement} */}
         {movieList
           .filter((movie) =>
             movie.title.toLowerCase().includes(searchTerm.toLowerCase().trim())
