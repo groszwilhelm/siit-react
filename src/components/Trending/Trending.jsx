@@ -1,9 +1,10 @@
-import { movieList } from "../../data";
 import Movie from "../Movie/Movie";
+
+import PropTypes from 'prop-types';
 
 import './Trending.css';
 
-export default function Trending() {
+export default function Trending({ movieList }) {
   return (
     <section>
       <header>
@@ -22,3 +23,7 @@ export default function Trending() {
     </section>
   );
 }
+
+Trending.propTypes = {
+  movieList: PropTypes.any,
+};

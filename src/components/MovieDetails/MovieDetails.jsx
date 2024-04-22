@@ -1,13 +1,23 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 // import { movieList } from '../../data.js';
 import Movie from "../Movie/Movie";
 import { useEffect, useState } from "react";
-import { getMovie, getMovies } from "../../libs/movie";
+import { deleteMovie, getMovie, getMovies } from "../../libs/movie";
+import Dialog from "../Dialog/Dialog";
+
+// const obj = {
+//   prop1: '11'
+// }
+
+// delete obj.prop1;
 
 export function MovieDetails() {
   const { idMovie } = useParams();
+  // useSearchParams();
   const navigate = useNavigate();
   const [movie, setMovie] = useState();
+
+  const [showDelete, setShowDelete] = useState(false);
 
   // const movie = movieList.find((movie) => movie.id === idMovie);
 
@@ -32,6 +42,14 @@ export function MovieDetails() {
   //   }
   // }, []);
 
+  function editMovie() {
+    navigate(`/edit-movie/${movie.id}`);
+  }
+
+  function handleDeleteMovie() {
+    deleteMovie(movie.id).then(() => navigate("/"));
+  }
+
   if (!movie) {
     return (
       <h2>
@@ -48,6 +66,19 @@ export function MovieDetails() {
       </header>
 
       {<Movie skipNavigation movie={movie} />}
+
+      <button onClick={editMovie}>Edit Movie</button>
+      <button onClick={() => setShowDelete(true)}>Delete Movie</button>
+
+      {showDelete ? (
+        <Dialog
+          title={`Are you sure you want to delete: ${movie.title}?`}
+          success={handleDeleteMovie}
+          reject={() => setShowDelete(false)}
+        />
+      ) : (
+        ""
+      )}
     </section>
   );
 }

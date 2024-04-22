@@ -6,7 +6,7 @@ import "./Recommended.css";
 import { getMovies } from '../../libs/movie';
 import { useEffect, useState } from 'react';
 
-export default function Recommended({ searchTerm }) {
+export default function Recommended({ searchTerm, movieList }) {
   // Alternative to JSX syntax below for filtering and mapping
   // const movieListElement = [];
 
@@ -19,11 +19,6 @@ export default function Recommended({ searchTerm }) {
   //     );
   //   }
   // }
-  let [movieList, setMovieList] = useState([]);
-
-  useEffect(() => {
-    getMovies().then((body) => setMovieList(body));
-  }, []);
 
   return (
     <section>
@@ -48,5 +43,6 @@ export default function Recommended({ searchTerm }) {
 }
 
 Recommended.propTypes = {
-  searchTerm: PropTypes.string
-}
+  searchTerm: PropTypes.string,
+  movieList: PropTypes.any,
+};

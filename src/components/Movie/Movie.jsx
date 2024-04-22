@@ -51,7 +51,7 @@ Movie.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,
-    year: PropTypes.number,
+    year: PropTypes.string,
     bookmarked: PropTypes.bool,
     pg: PropTypes.string,
     category: PropTypes.string,
