@@ -4,6 +4,7 @@ import Movie from "../Movie/Movie";
 import { useEffect, useState } from "react";
 import { deleteMovie, getMovie, getMovies } from "../../libs/movie";
 import Dialog from "../Dialog/Dialog";
+import { useDialog } from '../Dialog/DialogHooks';
 
 // const obj = {
 //   prop1: '11'
@@ -17,7 +18,7 @@ export function MovieDetails() {
   const navigate = useNavigate();
   const [movie, setMovie] = useState();
 
-  const [showDelete, setShowDelete] = useState(false);
+  const dialogConfig = useDialog(`Are you sure you want to delete: ${movie?.title}?`);
 
   // const movie = movieList.find((movie) => movie.id === idMovie);
 
@@ -68,17 +69,13 @@ export function MovieDetails() {
       {<Movie skipNavigation movie={movie} />}
 
       <button onClick={editMovie}>Edit Movie</button>
-      <button onClick={() => setShowDelete(true)}>Delete Movie</button>
+      <button onClick={() => dialogConfig.closeDialog(true)}>Delete Movie</button>
 
-      {showDelete ? (
-        <Dialog
-          title={`Are you sure you want to delete: ${movie.title}?`}
-          success={handleDeleteMovie}
-          reject={() => setShowDelete(false)}
-        />
-      ) : (
-        ""
-      )}
+      <Dialog
+        {...dialogConfig}
+        success={handleDeleteMovie}
+        reject={() => dialogConfig.closeDialog(false)}
+      />
     </section>
   );
 }

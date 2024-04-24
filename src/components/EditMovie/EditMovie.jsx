@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getMovie, updateMovie } from "../../libs/movie";
+import { getMovie, patchMovie } from "../../libs/movie";
 import { useNavigate, useParams } from "react-router-dom";
 import MovieForm from "../MovieForm";
 
@@ -15,7 +15,7 @@ export default function EditMovie() {
   }, [id]);
 
   function submit(movie) {
-    updateMovie(id, movie).then(() => navigator(`/movie-details/${id}`));
+    patchMovie(id, movie).then(() => navigator(`/movie-details/${id}`));
   }
 
   return (

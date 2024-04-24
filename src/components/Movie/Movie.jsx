@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import "./Movie.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { patchMovie } from '../../libs/movie';
 
 export default function Movie(props) {
   const { id, title, pg, imageUrl, category, bookmarked, year } = props.movie;
@@ -20,7 +21,7 @@ export default function Movie(props) {
   );
 
   function setBookmark() {
-    setChecked(!checked);
+    patchMovie(id, { bookmarked: !checked }).then(() => setChecked(!checked));
   }
 
   if (!props.skipNavigation) {

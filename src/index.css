@@ -6,3 +6,7 @@ body {
   background-color: var(--color-primary);
   color: white;
 }
+
+.red {
+  color: red;
+}

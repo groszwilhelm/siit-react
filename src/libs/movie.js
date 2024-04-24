@@ -1,12 +1,16 @@
-import axios from 'axios';
+import { url, axios } from './config';
 
-const url = "http://localhost:3000/movies";
+const basePath = `${url}/movies`;
 
-export function getMovies() {
+export function getMovies(accessToken) {
   // axios -> alternative to fetch -> npm install axios
-  return fetch(`${url}`).then((response) => {
+  return fetch(`${basePath}`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+    }
+  }).then((response) => {
     if (!response.ok) {
-      throw new Error(response);
+      throw response;
     }
 
     // JSON.parse equivalent
@@ -15,17 +19,17 @@ export function getMovies() {
 }
 
 export function getMovie(id) {
-  return axios.get(`${url}/${id}`);
+  return axios.get(`${basePath}/${id}`);
 }
 
 export function createMovie(movie) {
-  return axios.post(`${url}`, movie);
+  return axios.post(`${basePath}`, movie);
 }
 
-export function updateMovie(id, movie) {
-  return axios.patch(`${url}/${id}`, movie);
+export function patchMovie(id, partialMovieProperties) {
+  return axios.patch(`${basePath}/${id}`, partialMovieProperties);
 }
 
 export function deleteMovie(id) {
-  return axios.delete(`${url}/${id}`);
+  return axios.delete(`${basePath}/${id}`);
 }
