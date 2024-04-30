@@ -4,13 +4,15 @@ import { HiBookmark } from "react-icons/hi";
 import PropTypes from "prop-types";
 
 import "./Movie.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { patchMovie } from '../../libs/movie';
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Movie(props) {
   const { id, title, pg, imageUrl, category, bookmarked, year } = props.movie;
   const [checked, setChecked] = useState(bookmarked);
+  const { auth } = useContext(AuthContext);
 
   let imageJsx = (
     <img
@@ -21,7 +23,9 @@ export default function Movie(props) {
   );
 
   function setBookmark() {
-    patchMovie(id, { bookmarked: !checked }).then(() => setChecked(!checked));
+    patchMovie(id, { bookmarked: !checked }, auth).then(() =>
+      setChecked(!checked)
+    );
   }
 
   if (!props.skipNavigation) {

@@ -1,13 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../libs/auth';
 import { useContext, useState } from 'react';
-import { AuthContext } from '../../App';
+import { AuthContext } from "../../contexts/AuthContext";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function Login() {
   const navigator = useNavigate();
   const [error, setError] = useState();
 
   const { setAuth } = useContext(AuthContext);
+  const { setUser } = useContext(UserContext);
 
   function loginUser(event) {
     event.preventDefault();
@@ -21,10 +23,12 @@ export default function Login() {
 
     login(credentials)
       .then((response) => {
-        const { accessToken } = response.data;
+        const { accessToken, user } = response.data;
 
         localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem("user", JSON.stringify(user));
         setAuth(accessToken);
+        setUser(user);
         navigator('/');
       })
       .catch(({ response }) => {

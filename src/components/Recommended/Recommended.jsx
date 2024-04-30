@@ -3,8 +3,6 @@ import Movie from "../Movie/Movie";
 import PropTypes from "prop-types";
 
 import "./Recommended.css";
-import { getMovies } from '../../libs/movie';
-import { useEffect, useState } from 'react';
 
 export default function Recommended({ searchTerm, movieList }) {
   // Alternative to JSX syntax below for filtering and mapping

@@ -1,10 +1,11 @@
-import { useParams, useNavigate, useSearchParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 // import { movieList } from '../../data.js';
 import Movie from "../Movie/Movie";
-import { useEffect, useState } from "react";
-import { deleteMovie, getMovie, getMovies } from "../../libs/movie";
+import { useContext, useEffect, useState } from "react";
+import { deleteMovie, getMovie } from "../../libs/movie";
 import Dialog from "../Dialog/Dialog";
 import { useDialog } from '../Dialog/DialogHooks';
+import { AuthContext } from "../../contexts/AuthContext";
 
 // const obj = {
 //   prop1: '11'
@@ -17,6 +18,7 @@ export function MovieDetails() {
   // useSearchParams();
   const navigate = useNavigate();
   const [movie, setMovie] = useState();
+  const { auth } = useContext(AuthContext);
 
   const dialogConfig = useDialog(`Are you sure you want to delete: ${movie?.title}?`);
 
@@ -27,7 +29,7 @@ export function MovieDetails() {
     //   const foundMovie = body.find((movie) => movie.id === idMovie);
     //   setMovie(foundMovie);
     // });
-    getMovie(idMovie)
+    getMovie(idMovie, auth)
       .then((response) => {
         setMovie(response.data);
       })
@@ -48,7 +50,7 @@ export function MovieDetails() {
   }
 
   function handleDeleteMovie() {
-    deleteMovie(movie.id).then(() => navigate("/"));
+    deleteMovie(movie.id, auth).then(() => navigate("/"));
   }
 
   if (!movie) {

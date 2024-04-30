@@ -4,7 +4,17 @@
       "email": "groszwilhelm@gmail.com",
       "password": "$2a$10$jWQ.OYc5cpUJiehJ4F34oOzR1WHGPfZ/XPU2Q/4/8osodQkX5nSfC",
       "username": "Hello",
+      "roles": [
+        "Admin",
+        "Client"
+      ],
       "id": 1
+    },
+    {
+      "email": "12@gmail.com",
+      "password": "$2a$10$JUxQhSdTyYAq0RR/IxGIpuKnRkX3e1Vji.xdQ.UjtqruJ89ap7IVi",
+      "username": "12",
+      "id": 2
     }
   ],
   "movies": [
@@ -17,16 +27,6 @@
       "pg": "PG",
       "bookmarked": true,
       "trending": true
-    },
-    {
-      "id": "56f9b76a-8ec7-44ad-bd44-0eff0496b8e3",
-      "imageUrl": "https://picsum.photos/id/100/300/200",
-      "year": "2019",
-      "title": "The diary",
-      "category": "Movie",
-      "pg": "PG",
-      "bookmarked": true,
-      "trending": false
     },
     {
       "id": "7f51dde4-0fca-4208-87ea-d6d2175757bc",
@@ -55,7 +55,7 @@
       "title": "great",
       "category": "Series",
       "pg": "PG",
-      "bookmarked": false,
+      "bookmarked": true,
       "trending": true
     },
     {

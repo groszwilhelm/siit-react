@@ -18,18 +18,33 @@ export function getMovies(accessToken) {
   });
 }
 
-export function getMovie(id) {
-  return axios.get(`${basePath}/${id}`);
+export function getMovie(id, accessToken) {
+  return axios.get(`${basePath}/${id}`, {
+    headers: getDefaultHeaders(accessToken),
+  });
 }
 
-export function createMovie(movie) {
-  return axios.post(`${basePath}`, movie);
+export function createMovie(movie, accessToken) {
+  return axios.post(`${basePath}`, movie, {
+    headers: getDefaultHeaders(accessToken),
+  });
 }
 
-export function patchMovie(id, partialMovieProperties) {
-  return axios.patch(`${basePath}/${id}`, partialMovieProperties);
+export function patchMovie(id, partialMovieProperties, accessToken) {
+  return axios.patch(`${basePath}/${id}`, partialMovieProperties, {
+    headers: getDefaultHeaders(accessToken),
+  });
 }
 
-export function deleteMovie(id) {
-  return axios.delete(`${basePath}/${id}`);
+export function deleteMovie(id, accessToken) {
+  return axios.delete(`${basePath}/${id}`, {
+    headers: getDefaultHeaders(accessToken),
+  });
+}
+
+function getDefaultHeaders(accessToken) {
+  return {
+    Authorization: `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  };
 }
